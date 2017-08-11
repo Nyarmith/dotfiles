@@ -17,8 +17,6 @@ get_arch() {
             arch=AIX
         elif test "$OS" = "SunOS"; then
             arch=SunOS
-        elif test "$OS" = "SunOS"; then
-            arch=SunOS
         else
             arch=$OS    #usually "Linux"
         fi
@@ -26,4 +24,24 @@ get_arch() {
     echo $arch
 }
 
-export ARCH="$(get_arch)"
+ARCH="$(get_arch)"
+export ARCH
+
+
+#shared library variable based on platform
+
+if str_contains "$(get_arch)" "HP-UX"; then
+    __shlib_path="SHLIB_PATH"
+elif str_contains "$(get_arch)" "AIX"; then
+    __shlib_path="LIBPATH"
+else
+    __shlib_path="LD_LIBRARY_PATH"
+fi
+
+export $__shlib_path #may not be necessary
+
+#accept directory, adds to library search path
+addlibs(){
+    env_prepend $__shlib_path $1
+}
+

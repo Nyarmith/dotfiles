@@ -5,8 +5,8 @@ test ! -z "$DEBUG" && echo './init.ksh'
 
 #--- import modules ----
 import_dir lib              #common ksh functions and string operations
-import_dir aliases          #generic aliases for any system
 import_dir os_specific      #system-specific functions and workarounds
+import_dir aliases          #generic aliases for any system
 import_dir tool_specific    #configuration options for important tools
 import_dir ps_config        #final visual touches and minor qol stuff
 # ...
