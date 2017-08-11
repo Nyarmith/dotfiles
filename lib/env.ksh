@@ -30,7 +30,6 @@ env_append() {
     fi
 }
 
-
 env_prepend() {
     __env_prepend__var="$1"
     __env_prepend__value="$(env_get $__env_prepend__var)"
@@ -43,10 +42,8 @@ env_prepend() {
     fi
 }
 
-
-
-#alternate versions using ksh-style functions instead of posix-style ones
-#function append {
+#alternatively use ksh-style functions, but not as portable as posix
+#append() {
 #    typeset -n var="$1"
 #    if [[ -z $var ]]; then
 #        export var="$2"
@@ -57,7 +54,8 @@ env_prepend() {
 #        fi
 #    fi
 #}
-#function prepend{
+
+#prepend(){
 #    typeset -n var="$1"
 #    if [[ -z $var ]]; then
 #        export var="$2"
