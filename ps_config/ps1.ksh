@@ -1,6 +1,8 @@
 #base PS1
 #export PS1="\[\e[0;32m\][\h:\w]\$\[\e[m\] "
-export PS1='$PWD>'
+#export PS1="$PWD>"
+#export PS1="${HOSTNAME}:\${PWD##*/} \$ "
+export PS1='$(print -n "`id -un`@`hostname`:";if [[ "${PWD#$HOME}" != "$PWD" ]] then; print -n "~${PWD#$HOME}"; else; print -n "$PWD";fi;print "\n$ ")'
 
 
 if type cleartool >/dev/null 2>/dev/null; then
