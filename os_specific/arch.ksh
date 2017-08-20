@@ -45,3 +45,14 @@ addlibs(){
     env_prepend $__shlib_path $1
 }
 
+#get number of cores on machine
+corenum() {
+    if str_contains "$(get_arch)" "SunOS"; then
+        psrinfo -p
+    elif str_contains "$(get_arch)" "AIX"; then
+        lsconf | grep Process #lsdev -Cc processor
+    else   #some linux
+        grep -c ^processor /proc/cpuinfo
+    fi
+}
+
