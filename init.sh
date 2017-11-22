@@ -1,4 +1,8 @@
 test ! -z "$DEBUG" && echo './init.sh'
+
+#set XDG_CONFIG home
+export XDG_CONFIG_HOME="$(pwd)/config"
+
 # initialization
 . ./pushd.sh
 . ./import.sh
