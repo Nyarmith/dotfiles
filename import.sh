@@ -3,7 +3,7 @@
 # Takes a relative path to the script to import.
 # old-style function so that side-effects in lower functions (e.g. set -o vi) take effect
 # in caller.
-test ! -z "$DEBUG" && echo './import.ksh'
+test ! -z "$DEBUG" && echo './import.sh'
 
 # repeat a value
 repeat() {
@@ -38,7 +38,7 @@ import_script() {
 }
 
 import_dir() {
-    for file in ./${1}/*.ksh; do
+    for file in ./${1}/*.sh; do
         import_script "$file"
     done
 }

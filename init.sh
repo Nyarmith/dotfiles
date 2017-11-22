@@ -1,7 +1,7 @@
-test ! -z "$DEBUG" && echo './init.ksh'
+test ! -z "$DEBUG" && echo './init.sh'
 # initialization
-. ./pushd.ksh
-. ./import.ksh
+. ./pushd.sh
+. ./import.sh
 
 #--- import modules ----
 import_dir lib              #common ksh functions and string operations

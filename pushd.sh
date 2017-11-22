@@ -1,7 +1,7 @@
 # pushd, popd
 # Relocatable, no imports.
 # substitute for bash built-ins
-test ! -z "$DEBUG" && echo './pushd.ksh'
+test ! -z "$DEBUG" && echo './pushd.sh'
 __delimeter=':'
 # Args:
 #   var - the environment variable to push onto

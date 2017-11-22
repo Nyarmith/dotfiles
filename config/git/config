@@ -1,0 +1,13 @@
+# This is Git's per-user configuration file.
+[user]
+	name = "nyarmith"
+	email = powah.serge@gmail.com
+[color]
+	diff = true
+	status = true
+	branch = true
+	interactive = true
+	ui = true
+	pager = true
+[core]
+	attributesFile=~/.config/git/attributes
