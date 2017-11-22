@@ -2,6 +2,7 @@ test ! -z "$DEBUG" && echo './init.sh'
 
 #set XDG_CONFIG home
 export XDG_CONFIG_HOME="$(pwd)/config"
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # initialization
 . ./pushd.sh
