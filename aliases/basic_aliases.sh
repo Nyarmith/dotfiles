@@ -4,7 +4,7 @@ fi
 
 alias l=ls
 alias la='ls -a'
-alias ll='ls -lrt'
+alias ll='ls -lrth'
 
 alias  ..='cd ..'
 alias ..1='cd ..'
@@ -20,3 +20,4 @@ alias cdd="cd ~/Documents"
 
 alias egrep='egrep --color=auto'
 
+alias t=tmux
