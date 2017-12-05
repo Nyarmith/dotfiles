@@ -69,11 +69,11 @@ env_prepend() {
 
 
 path_append() {
-    append PATH "$1"
+    env_append PATH "$1"
 }
 
 path_prepend() {
-    prepend PATH "$1"
+    env_prepend PATH "$1"
 }
 
 # http://www.unix.com/shell-programming-and-scripting/137435-ksh-different-syntax-function.html

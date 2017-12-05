@@ -68,7 +68,6 @@ let @f = "ifor(i = ; i < ; i++)"
 "function F(start;end)
 "    let my_out = "for (int i = ",start,"; i < ", end ,"; i ++)"
 
-set bg=dark
 colorscheme torte
 
 " set backspace=indent,eol,start " uncomment if I want to use bad conventions
