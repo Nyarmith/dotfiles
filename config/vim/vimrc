@@ -71,7 +71,7 @@ let @f = "ifor(i = ; i < ; i++)"
 colorscheme torte
 
 " set backspace=indent,eol,start " uncomment if I want to use bad conventions
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = $XDG_CONFIG_HOME.'/vim/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 
 "" nerdtree config
