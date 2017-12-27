@@ -7,7 +7,6 @@ export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 # initialization
 . ./pushd.sh
 . ./import.sh
-
 #--- import modules ----
 import_dir lib              #common ksh functions and string operations
 import_dir os_specific      #system-specific functions and workarounds
