@@ -3,7 +3,7 @@
 if echo "$SHELL" | grep -q "bash"; then
   bash_curl(){
     if [ -z $1 ]; then
-      printf "Usage: bash_curl <URI>"
+      printf "Usage: bash_curl <URI>\n"
       return 1
     fi
     exec 5<>/dev/tcp/$1/80  #open file descriptor 5 for io on this particular socket
