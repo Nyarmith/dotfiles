@@ -14,9 +14,10 @@ Finally, mneumonic: du = "disk usage? [of a file]" like a query of a folder or s
 ### String Manipulation
 
 Finding, manipulating strings with built-ins and utilities
+
 | problem | solution |
 | ------------- | ------------- |
-| Does my variable contain a substring? | echo $VAR | grep -q "string", in this case grep returns 0 if there's a match, otherwise a 1 |
+| Does my variable contain a substring? | echo $VAR \| grep -q "string", in this case grep returns 0 if there's a match, otherwise a 1 |
 | Does a file contain a substring? | grep -qE '^regex_*pattern' file, same as above pretty much |
 | I want to print out the nth column of some input | cat input.txt \| awk '{print $2}' |
 | but the first few lines doesn't conform to the format| sed -e 4d input.txt \| \<above_cmd\>, tail -n +4 input.txt \| \<above_cmd\> |
@@ -28,7 +29,7 @@ Finding, manipulating strings with built-ins and utilities
 | Now I want to delete all lines with that pattern entirely | sed -i "/\<pattern\>/d" \<file\> |
 | List all files in current dir containing a string | grep -rl \<pattern\>  \| uniq|
 | ok but I want to do that only on all .txt files | find . -iname "*.txt" -execdir grep -l \<pattern\>  |
-| and I want to rename them to .md files! | find . -iname "*.txt" -exec rename 's/.txt$/.md/' {} \\;|
+| and I want to rename them to .md files!! | find . -iname "*.txt" -exec rename 's/.txt$/.md/' {} \\;|
 | wow you're good! | thank you |
 
 <!-- Bash-specific string manipulation, where variable $str will hold our string
