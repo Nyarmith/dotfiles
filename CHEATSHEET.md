@@ -28,6 +28,7 @@ Finding, manipulating strings with built-ins and utilities
 | Actually, I really meant to delete that line entirely | sed -i "112d" \<file\> |
 | Now I want to delete all lines with that pattern entirely | sed -i "/\<pattern\>/d" \<file\> |
 | List all files in current dir containing a string | grep -rl \<pattern\>  \| uniq|
+| Maybe I want to search only .txt and .pl files | grep -rl -i --include \*.txt --include \*.pl "\<pattern\>" ./ \| uniq |
 | ok but I want to do that only on all .txt files | find . -iname "*.txt" -execdir grep -l \<pattern\>  |
 | and I want to rename them to .md files!! | find . -iname "*.txt" -exec rename 's/.txt$/.md/' {} \\;|
 | wow you're good! | thank you |
