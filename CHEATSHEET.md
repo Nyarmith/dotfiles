@@ -19,7 +19,7 @@ Finding, manipulating strings with built-ins and utilities
 | ------------- | ------------- |
 | Does my variable contain a substring? | echo $VAR \| grep -q "string", in this case grep returns 0 if there's a match, otherwise a 1 |
 | Does a file contain a substring? | grep -qE '^regex_*pattern' file, same as above pretty much |
-| I want to find a folder that maybe has the string "coolproj" in it  | find . -type d -iname "*coolproj*" |
+| I want to find a folder that maybe has the string "coolproj" in it  | find . -type d -iname "\*coolproj\*" |
 | I want to print out the nth column of some input | cat input.txt \| awk '{print $2}' |
 | but the first few lines doesn't conform to the format| sed -e 4d input.txt \| \<above_cmd\>, tail -n +4 input.txt \| \<above_cmd\> |
 | get last line of file| tail -n1 \<file\> |
