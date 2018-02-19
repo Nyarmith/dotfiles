@@ -13,7 +13,13 @@ alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
 alias ..5='cd ../../../../..'
 
-alias cdp="cd ~/Projects"
+# *WARNING* NOT ACTUALLY AN ALIAS
+cdp(){
+  cd ~/Projects
+  if [ ! -z $1 ]; then
+    cd $1
+  fi
+}
 alias cdi="cd ~/Images"
 alias cda="cd ~/Audio"
 alias cdd="cd ~/Documents"
