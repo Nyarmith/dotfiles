@@ -34,9 +34,30 @@ Finding, manipulating strings with built-ins and utilities
 | and I want to rename them to .md files!! | find . -iname "*.txt" -exec rename 's/.txt$/.md/' {} \\;|
 | wow you're good! | thank you |
 
+#### Some Common Platform Differences
+
+| RHEL (v7.2) | SunOS (v11.3) | AIX (v7.2) | HP-UX (v11.31) |
+| ------------- | ------------- | ------------- | ------------- |
+| grep -ri "expr" | find . -type f -print \| grep -i "expr" | grep -ri "expr"  | find . -type f -print \| grep -i "expr" |
+| uname -v | uname -v | oslevel -s  | uname -r |
+| swapon | swap | lsps | swapinfo |
+| /etc/fstab | /etc/vfstab | /etc/file systems | /etc/fstab |
+| rpm -qa | pkg{info,chk} | ls{lpp,src} | swlist |
+| rpm -i | pkgadd | smit install | swinstall |
+| dmesg | prtdiag | errpt | dmesg |
+| sysctl | prtctl + /etc/system | vmo, ioo, no, schedo, nfso, chdev | kctune |
+| systemctl | Svcadm, svcs  | lssrc, stopsrc, startsrc | /etc/init.d/net start |
+| modprobe | drvconfig | cfgmgr | insf |
+| lvresize | growfs | chfs | extendfs |
+| iptables | ipf, ipfconfig | \*filt | ipf, ipfconfig |
+| ls{pci,dev,usb,blk} | ptrconf | ls{cfg,attr}, prtconf | ioscan, dmesg |
+| ext4 | ufs, zfs | jfs, jfs2 | hfs, VxFS |
+
 <!-- Bash-specific string manipulation, where variable $str will hold our string
 | problem | solution |
 | ------------- | ------------- |
 | I want to change the extension from .txt to .md | ${str:} |
 | I want to change the extension from .txt to .md | | >
+-->
 
+<!-- section about where the core-essential logs are -->
