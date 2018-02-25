@@ -16,6 +16,12 @@ if echo "$SHELL" | grep -q "bash"; then
     #http://tldp.org/LDP/abs/html/io-redirection.html
     #http://www.linuxjournal.com/content/more-using-bashs-built-devtcp-file-tcpip
   }
+
+  #fun gimmick
+  top10(){
+    history | awk '{print $2}' | awk 'BEGIN {FS="|"}{print $1}' | sort | uniq -c | sort -nr | head
+  }
 else
   printf "* Warning: Your shell isn't bash. Some functions will be unavailable."
+
 fi
