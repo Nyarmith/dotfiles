@@ -29,3 +29,5 @@ set -o vi
 #else
     #export TERM=xterm
 #fi
+
+. ./firstLogin.sh
