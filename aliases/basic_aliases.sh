@@ -26,4 +26,6 @@ alias cdd="cd ~/Documents"
 
 alias egrep='egrep --color=auto'
 
+alias python=python3
+
 alias t=tmux
