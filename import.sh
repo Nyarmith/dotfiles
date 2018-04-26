@@ -42,3 +42,11 @@ import_dir() {
         import_script "$file"
     done
 }
+
+#maintain a message stream for outputs
+__import_log_var=""
+
+__import_log(){
+  message=$1
+  __import_log_var="${__import_log_var}${message}\n"
+}
