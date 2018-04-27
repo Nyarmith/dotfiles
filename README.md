@@ -14,3 +14,20 @@ cd /path/to/dotfiles/
 cd $__last
 unset __last
 ```
+
+<br />
+For for module development
+__import_log "your message" to send a message to the user on the first login of their days, separate from the greetings message(i.e. a diagnostics msg pops up if it exists)
+
+<br />
+<br />
+
+--------
+
+TODO:
+* More cool bash networking tricks
+* Randomized Login Messages
+  * Randomized Login Ascii Art
+* Integrate this with some stupid webapi (for linux webapp?)
+* More stuff related to c++ development
+* More linux notes
