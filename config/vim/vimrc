@@ -68,6 +68,11 @@ let @f = "ifor(i = ; i < ; i++)"
 "function F(start;end)
 "    let my_out = "for (int i = ",start,"; i < ", end ,"; i ++)"
 
+
+"c++ main macro
+let @m = "i#include <iostream>\n#include <vector>\n#include <string>\n#include <cstdint>\n#include <cstdio>\n#include <numeric>\n#include <algorithm>\n#include <iterator>\n#include <set>\n#include <map>\n#include <utility>\n#define ll long long\n\nint main(){\n}\n"
+
+
 colorscheme torte
 
 " set backspace=indent,eol,start " uncomment if I want to use bad conventions
