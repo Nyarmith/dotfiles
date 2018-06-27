@@ -42,7 +42,7 @@ export $__shlib_path #may not be necessary
 
 #accept directory, adds to library search path
 addlibs(){
-    env_prepend $__shlib_path $1
+    prependvar __shlib_path $1
 }
 
 #get number of cores on machine

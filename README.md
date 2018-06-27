@@ -25,9 +25,14 @@ __import_log "your message" to send a message to the user on the first login of 
 --------
 
 TODO:
+* More string-manipulation trix
+* More networking notes
+* More non-linux notes
+* More linux notes
 * More cool bash networking tricks
 * Randomized Login Messages
   * Randomized Login Ascii Art
 * Integrate this with some stupid webapi (for linux webapp?)
-* More stuff related to c++ development
-* More linux notes
+* More c++ utilities
+* Pushdown-automata
+* A language-interpreter in bash
