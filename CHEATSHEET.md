@@ -34,6 +34,15 @@ Finding, manipulating strings with built-ins and utilities
 | and I want to rename them to .md files!! | find . -iname "*.txt" -exec rename 's/.txt$/.md/' {} \\;|
 | wow you're good! | thank you |
 
+### Debugging Tools
+You will inevitably have to figure out why a binary/command/process isn't working. Here's how.
+
+| problem | solution |
+| ------------- | ------------- |
+| I would like to see all the syscalls my binary is doing | strace -f -o file.log my_command |
+| Buddy, I'm on AIX/SunOS | truss -f -o out.log my_command  |
+| Weirdly enough I'm debugging on HP-UX | tusc -f -o /full/path/to/out.log my_command  |
+
 #### Some Common Platform Differences
 
 | RHEL (v7.2) | SunOS (v11.3) | AIX (v7.2) | HP-UX (v11.31) |
