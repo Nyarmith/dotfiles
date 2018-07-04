@@ -13,8 +13,7 @@ import_dir os_specific      #system-specific functions and workarounds
 import_dir aliases          #generic aliases for any system
 import_dir tool_specific    #configuration options for important tools
 import_dir ps_config        #final visual touches and minor qol stuff
-# ...
-# add more of your own custom directories below
+import_dir host_specific    #files speicifc to the host live here
 
 #export ARCH="$(get_arch)"
 #export CONTEXT="$(get_host)"
