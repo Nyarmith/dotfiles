@@ -22,6 +22,9 @@ set smartindent
 set number          "numbers on left part of screen
 set tabstop=2       "Number of spaces that actual tabs are represented as
 set shiftwidth=2    "Number of spaces used for autoindent steps
+set cindent
+" handle lambda correctly
+set cino=j1,(0,ws,Ws,g0
 set expandtab       "turns tabs into spaces
 set ruler           "tells column and line info on bottom
 set showmatch       "highlight match from searching functions
