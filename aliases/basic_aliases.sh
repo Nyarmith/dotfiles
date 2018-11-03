@@ -28,6 +28,8 @@ alias egrep='egrep --color=auto'
 
 alias python=python3
 
+#maybe workaround for tmux not supporting xdg_config_home
+#alias tmux="$XDG_CONFIG_HOME/tmux/tmux.conf"
 alias t=tmux
 
 alias g++="g++ -std=c++14"
