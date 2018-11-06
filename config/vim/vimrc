@@ -20,8 +20,8 @@ filetype plugin indent on
 set autoindent
 set smartindent
 set number          "numbers on left part of screen
-set tabstop=2       "Number of spaces that actual tabs are represented as
-set shiftwidth=2    "Number of spaces used for autoindent steps
+set tabstop=4       "Number of spaces that actual tabs are represented as
+set shiftwidth=4    "Number of spaces used for autoindent steps
 set cindent
 " handle lambda correctly
 set cino=j1,(0,ws,Ws,g0
@@ -42,10 +42,18 @@ set laststatus=2
 set smartcase
 
 "some shortcuts
-nnoremap <F2> :w<CR>
-nnoremap <F3> :set hlsearch!<CR>
+
+"toggle search highlight
+nnoremap <F2> :set hlsearch!<CR>
+
+"quicksave
+nnoremap <F5> :w<CR>
+
+"search and replace
 nnoremap <F4> :%s/\<<C-r><C-w>\>/
-nnoremap <F5> ! source %:p:h/../../scripts/do_sim.cmd %:p:h<CR>
+
+"toggle line-numbers
+nnoremap <F12> :set number!<CR>
 
 filetype indent on  "load filetype-specific indent files
 filetype plugin on
@@ -93,17 +101,22 @@ let g:ycm_python_binary_path='python3'
 
 
 "" nerdtree config
-autocmd vimenter * NERDTree
+"-starts nerdtree on startup
+" autocmd vimenter * NERDTree
+"-close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" default youcompleteme completion database
+"-default youcompleteme completion database
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-" NERDTress File highlighting
+"-disable from starting it by default
+" let NERDTreeHijackNetrw = 0
+
+"-NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
-" go back to focused window after opening nerdtree
+"-go back to focused window after opening nerdtree
 autocmd VimEnter * wincmd p
 
 call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
@@ -119,6 +132,8 @@ call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+
+" use ctrl+n to open NERDTree as necessary
 map <C-n> :NERDTreeToggle<CR>
 
-set tags+=~/.vim/cpp_tags
+" set tags+=~/.vim/cpp_tags
