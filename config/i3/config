@@ -4,8 +4,6 @@ exec --no-startup-id  urxvtd -q -o -f
 
 # start xpad
 exec --no-startup-id xpad -N
-#xpad shortcuts
-bindsym $mod+shift+s exec --no-startup-id xpad -N -t
 
 # "winkey" as mod
 set $mod Mod4
@@ -32,6 +30,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec urxvtc
 #bindsym $mod+Return exec i3-sensible-terminal
+#
+# lock screen
+bindsym $mod+Control+l exec i3lock -c 333333 -B=3 -k  --bar-indicator --datecolor=33333333 --redraw-thread
 
 
 # kill focused window
@@ -133,10 +134,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -157,10 +158,17 @@ bar {
         status_command i3status
 }
 
-#xpad config (solid linux sticky-note)
-bindsym $mod+shift+p exec xpad
+#xpad config (linux sticky-notes)
+bindsym $mod+t exec --no-startup-id xpad -N -t
+bindsym $mod+n exec xpad
 for_window [class="xpad"] floating enabled
 
+#auto-detect desktop config
+#the latter script is made with arandr + $(xrandr --list-monitors | cksum) + if
+exec --no-startup-id ~/.screenlayout/work-displays.sh
+
+
+#TODO: Something akin to the below, albeit factor it out to a script
 #set $displayMode "Set display mode [w]ork [l]aptop [h]ome"
 #bindsym $mod+x mode $displayMode
 #mode $displayMode {
