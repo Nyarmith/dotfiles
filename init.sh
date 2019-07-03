@@ -13,18 +13,13 @@ import_dir(){
 }
 
 #--- import modules ----
-import_dir lib              #common ksh functions and string operations
-import_dir ps_config        #final visual touches and minor qol stuff
-import_dir aliases          #generic aliases for any system
-import_dir tool_ext         #configuration options for important tools
-import_dir os_specific      #system-specific functions and workarounds
+import_dir lib
+import_dir ps_config
+import_dir aliases
+import_dir tool_ext
+import_dir os_specific
 import_dir host_specific 2> /dev/null
 
-#export ARCH="$(get_arch)"
-#export CONTEXT="$(get_host)"
-
-# This is here to support shells that do not respect set -o from
-# within functions (e.g. AIX)
 set -o vi
 
 # Workaround for Solaris/HP-UX not supporting xterm-256color
