@@ -10,6 +10,7 @@ source /path/to/dir/init.sh
 ```
 
 ### Organization
+```
 .
 ├── lib             # common functions and env vars
 ├── prompt\_string  # PS1 configuration
@@ -19,6 +20,7 @@ source /path/to/dir/init.sh
 ├── host\_specific  # host-specific additions, ignored by git
 ├── config          # config files for programs, found via XDG\_CONFIG\_HOME
 └── notes           # miscellaneous notes on sysadmin utilities and cmdline stuff
+```
 
 
 <br />
@@ -35,14 +37,14 @@ You, dear reader, can view this as a base for your own dotfiles. The directory-b
 --------
 
 TODO:
-* More string-manipulation trix
-* More networking notes
-* More non-linux notes
-* More linux notes
-* More cool bash networking tricks
+* More bash networking trix
 * Randomized Login Messages
   * Randomized Login Ascii Art
+* More bash file descriptor trix
 * Integrate this with some stupid webapi (for linux webapp?)
+* QOL stuff like 2-line PS1, more colors, ncurses screensavers
 * More c++ utilities
+* More bash job & pid management trix
 * Pushdown-automata
-* A language-interpreter in bash
+* Ncurses forms and stupid widgets (e.g. session-based sticky-notes)
+* An interpreter purely in bash
