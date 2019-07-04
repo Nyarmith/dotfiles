@@ -5,16 +5,15 @@ Keep in mind all sh "values" are strings.
 ### String Manipulation Shortcuts
 | function | description |
 | ------------- | ------------- |
-| pushvar envvar | treat variable as a stack, putting another value on it |
-| popvar | pop the last pushed value from a variable |
-| prependvar | adds a value at the bottom of a variable's stack |
-| path_append | shortcut for adding a directory to your path |
-| addlibs libdir | add the given path to the current environment's lib-search path in an os-invariant way |
-| str_contains arg1 arg2 | return true if arg1 contains the arg2 as a substring |
-| str_startswith arg1 arg2 | return true if arg1 starts with arg2 |
+| pushv | treat variable as a stack, pushing another value onto the top |
+| insertv | treat variable as a stack, inserting another value into the front |
+| popv | pop the last pushed value from a variable |
+| popfv | adds a value at the bottom of a variable's stack |
+| pappend | shortcut for adding a directory to your path |
+| addlib libdir | add the given path to the systems's equivalent of LD\_LIBRARY\_PATH |
 
 ### Diagnostics
 | function | description |
 | ------------- | ------------- |
-| get_arch | returns the current os/architecture |
-| corenum  | returns number of cores on the machine |
+| whatos | returns the current os/architecture |
+| cores  | returns number of cores on the machine |
