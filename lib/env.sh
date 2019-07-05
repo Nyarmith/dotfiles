@@ -23,3 +23,5 @@ fi
 
 export fgcol
 export bgcol
+
+set -o vi

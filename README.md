@@ -9,21 +9,22 @@ add a line in your bashrc to source the init script
 source /path/to/dir/init.sh
 ```
 
+If you want tmux to always be on with a new bash session, set TMUX\_ALWAYS\_ON before sourcing `init.sh`
+
 ### Organization
 ```
 .
 ├── lib             # common functions and env vars
-├── prompt\_string  # PS1 configuration
+├── prompt_string   # PS1 configuration
 ├── aliases         # general tool-independent aliases
-├── tool\_ext       # bash functions aimed at extending cmdline tools
-├── os\_specific    # dotfiles that do things based on what OS you're on
-├── host\_specific  # host-specific additions, ignored by git
+├── tool_ext        # bash functions aimed at extending cmdline tools
+├── os_specific     # dotfiles that do things based on what OS you're on
+├── host_specific   # host-specific additions, ignored by git
 ├── config          # config files for programs, found via XDG\_CONFIG\_HOME
 └── notes           # miscellaneous notes on sysadmin utilities and cmdline stuff
 ```
 
 
-<br />
 ### Adding Dotfiles
 
 From the start to end of the sourcing process in init.sh, the function `printlog` is available for any submodule to print debug output. Debug info will be printed if the var `DOTDEBUG` exists and is non-zero. Thus for a test run, you could do something like `DOTDEBUG=1 && source /path/to/dir/init.sh`
