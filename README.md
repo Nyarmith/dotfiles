@@ -9,7 +9,7 @@ add a line in your bashrc to source the init script
 source /path/to/dir/init.sh
 ```
 
-If you want tmux to always be on with a new bash session, set TMUX\_ALWAYS\_ON before sourcing `init.sh`
+If you want tmux to always be running with a new bash session, set `TMUX_ALWAYS_ON=1` before sourcing `init.sh`
 
 ### Organization
 ```
@@ -29,13 +29,15 @@ If you want tmux to always be on with a new bash session, set TMUX\_ALWAYS\_ON b
 
 From the start to end of the sourcing process in init.sh, the function `printlog` is available for any submodule to print debug output. Debug info will be printed if the var `DOTDEBUG` exists and is non-zero. Thus for a test run, you could do something like `DOTDEBUG=1 && source /path/to/dir/init.sh`
 
-<br />
-
 ### Customizing your repo
 
 You, dear reader, can view this as a base for your own dotfiles. The directory-based structure is pretty general, but I suggest you remove everything you don't need or want to understand. Err on the side of throwing something away if unsure. A minimal set to grow from might just include the `lib`, `aliases` and `config` directories.
 
+<br />
+
 --------
+
+<br />
 
 TODO:
 * More bash networking trix
