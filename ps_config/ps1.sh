@@ -13,7 +13,7 @@ __make_ps1(){
     local fmtStr=""
     if [[ -n $COL_ON ]]; then
         (( "$prevRet" )) && retStr="${fgcol[red]}${prevRet}${COL_OFF} "
-        fmtStr="${fgcol[yellow]}\\\\u@\\\\h ${fgcol[white]}[${fgcol[magenta]}\\\\w${fgcol[white]}]%.12s %s"
+        fmtStr="${fgcol[yellow]}\\\\u@\\\\h ${fgcol[white]}[${fgcol[magenta]}\\\\w${fgcol[white]}]%.12s %s${COL_OFF}"
     else
         (( "$prevRet" )) && retStr="${prevRet} "
         fmtStr="\\\\u@\\\\h [\\\\w]%.12s %s "
