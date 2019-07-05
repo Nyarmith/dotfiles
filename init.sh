@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-# enter dotfiles
-pushd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )" > /dev/null
-
+# must be first
 if [ -n "$TMUX_ALWAYS_ON" ] && hash tmux  && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
     exec tmux -f config/tmux/tmux.conf
     exit 0
 fi
 
+# enter dotfiles
+pushd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null 2>&1
 
 if [ -n "$DOTDEBUG" ]; then
     printlog(){ echo "dotdebug: " $@; };
