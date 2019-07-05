@@ -8,4 +8,5 @@ config/calibre*
 config/configstore*
 config/gedit*
 config/gtk-2*
+host_specific/*
 *.swp

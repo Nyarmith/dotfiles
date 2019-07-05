@@ -1,21 +1,3 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
-" Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'  "generate completion database based on cmake or makefile
-
-call vundle#end()
-filetype plugin indent on
-
-"built-in settings
 "set textwidth=79
 set autoindent
 set smartindent
@@ -36,22 +18,15 @@ set cursorline      "highlight current line
 set incsearch       "search as characters are entered
 set hlsearch        "highlight matches
 set showmatch       "highlight matching [{()}]
-"set statusline+=%F
 set laststatus=2
-"set lz              "lazyredraw, or don't refresh window when executing macros
 set smartcase
-
-"some shortcuts
 
 "toggle search highlight
 nnoremap <F2> :set hlsearch!<CR>
-
-"quicksave
-nnoremap <F5> :w<CR>
-
 "search and replace
 nnoremap <F4> :%s/\<<C-r><C-w>\>/
-
+"quicksave
+nnoremap <F5> :w<CR>
 "toggle line-numbers
 nnoremap <F12> :set number!<CR>
 
@@ -59,81 +34,7 @@ filetype indent on  "load filetype-specific indent files
 filetype plugin on
 syntax on
 
-
-"" nerdtree like setup, handy if I can't install it
-"let g:netrw_banner = 0
-"let g:netrw_liststyle = 3
-"let g:netrw_browse_split = 4
-"let g:netrw_altv = 1
-"let g:netrw_winsize = 15
-"augroup ProjectDrawer
-"    autocmd!
-"      autocmd VimEnter * :Vexplore
-"    augroup END
-
-
-
- "simple macros
-let @f = "ifor(i = ; i < ; i++)"
-
-"function F(start;end)
-"    let my_out = "for (int i = ",start,"; i < ", end ,"; i ++)"
-
-
 "c++ main macro
 let @m = "i#include <iostream>\n#include <vector>\n#include <string>\n#include <cstdint>\n#include <cstdio>\n#include <numeric>\n#include <algorithm>\n#include <iterator>\n#include <set>\n#include <map>\n#include <utility>\n#include <queue>\n#define ll long long\n\nint main(){\n}\n"
 
-
 colorscheme torte
-
-" set backspace=indent,eol,start " uncomment if I want to use bad conventions
-let g:ycm_global_ycm_extra_conf = $XDG_CONFIG_HOME.'/vim/.ycm_extra_conf.py'
-let g:ycm_rust_src_path = '~/rsrc/src'
-let g:ycm_confirm_extra_conf = 0
-
-" python with virtualenv support
-let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-let g:ycm_complete_in_comments = 1 " Completion in comments
-let g:ycm_complete_in_strings = 1 " Completion in string
-let g:ycm_python_binary_path='python3'
-
-
-"" nerdtree config
-"-starts nerdtree on startup
-" autocmd vimenter * NERDTree
-"-close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"-default youcompleteme completion database
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-"-disable from starting it by default
-" let NERDTreeHijackNetrw = 0
-
-"-NERDTress File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
- exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-"-go back to focused window after opening nerdtree
-autocmd VimEnter * wincmd p
-
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-
-" use ctrl+n to open NERDTree as necessary
-map <C-n> :NERDTreeToggle<CR>
-
-" set tags+=~/.vim/cpp_tags
