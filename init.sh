@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
+dotdir="$(dirname ${BASH_SOURCE[0]})"
+
 # must be first
 if [ -n "$TMUX_ALWAYS_ON" ] && hash tmux  && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-    exec tmux -f config/tmux/tmux.conf
+    exec tmux -f "${dotdir}/config/tmux/tmux.conf"
     exit 0
 fi
 
 # enter dotfiles
-pushd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null 2>&1
+pushd "$dotdir" > /dev/null 2>&1
 
 if [ -n "$DOTDEBUG" ]; then
     printlog(){ echo "dotdebug: " $@; };
@@ -36,4 +38,5 @@ printlog "End - importing directories"
 
 
 unset printlog
+unset dotdir
 popd > /dev/null # exit dotfiles
