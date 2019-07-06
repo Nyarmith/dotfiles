@@ -1,12 +1,13 @@
+*.swp
 aliases/desktop_aliases.sh
-config/gummi*
-config/config*
-config/mono*
 config/Pinta*
 config/brasero*
 config/calibre*
+config/config*
 config/configstore*
 config/gedit*
 config/gtk-2*
+config/gummi*
+config/mono*
+config/pulse*
 host_specific/*
-*.swp
