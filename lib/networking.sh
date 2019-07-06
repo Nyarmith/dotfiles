@@ -19,3 +19,28 @@ burl(){
 top10(){
   history | awk '{print $2}' | awk 'BEGIN {FS="|"}{print $1}' | sort | uniq -c | sort -nr | head
 }
+
+if hash socat 2> /dev/null; do
+
+    servefile(){
+        [ -z "$1" ] && {
+            printf "usage: servefile <file> [port]\n"
+            return 1
+        }
+
+        local file="$1"
+        local port="${2:-80}"
+        local mime_type=$(mimetype "$file")
+        local size_bytes=$(du -b "$file" | cut -f1)
+        local file_name=$(basename "$file")
+        local header="\
+
+        HTTP/1.1 200 OK
+        Content-Type: $mime_type
+        Content-Disposition: attachment; filename=$file_name
+        Content-Length: $size_bytes
+        "
+        socat -d -d - tcp-l:"$port",reuseaddr,fork < <(printf "$header"; cat "$file")
+    }
+done
+

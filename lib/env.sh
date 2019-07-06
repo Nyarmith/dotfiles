@@ -4,9 +4,11 @@ export XDG_CONFIG_HOME="$(pwd)/config"
 # vim does not support it, so this is a workaround hack
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
+export EDITOR=vi
+
 declare -Ag fgcol
 declare -Ag bgcol
-if hash tput; then
+if hash tput 2> /dev/null; then
     colorArr=(black red green yellow blue magenta cyan white)
     for color in {0..7}; do
         fgcol[${colorArr[$color]}]="$(tput setaf $color)"

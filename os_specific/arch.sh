@@ -1,11 +1,11 @@
 # Get os for a host
 
 __getlinux(){
-    if hash lsb_release; then
+    if hash lsb_release 2> /dev/null; then
         joins ' ' $(lsb_release -d -r | awk '{print $2}')
     elif [ -r /proc/version ]; then
         cat /proc/version | awk '{print $3}'
-    elif hash uname; then
+    elif hash uname 2> /dev/null; then
         uname -mrs
     fi
 }

@@ -1,4 +1,4 @@
-if hash bc; then
+if hash bc 2> /dev/null; then
     # bc aliases
     sin(){
         [[ -z "$1" ]] && {
