@@ -1,6 +1,6 @@
 chr() {
     if [ -z "$1" ] || (( "$1" > 256 )); then
-        echo "usage: chr <ascii_digit>"
+        echo "usage: chr <ascii_num>"
         return 1;
     fi
 
@@ -39,7 +39,7 @@ pushv() {
 
     local var="$1"
     if [[ -z ${!var} ]]; then
-        declare $var="$2"
+        declare -g $var="$2"
     else
         declare $var="$var:$2"
     fi
@@ -53,7 +53,7 @@ insv(){
 
     local var="$1"
     if [[ -z ${!var} ]]; then
-        declare $var="$2"
+        declare -g $var="$2"
     else
         declare $var="$2:$var"
     fi
@@ -68,7 +68,7 @@ popv(){
     local var="$1"
     [[ -z "$var" ]] && return 0;
     local before="${!var}"
-    declare $var=${!var%:*}
+    declare -g $var=${!var%:*}
     [[ "$before" == "${!var}" ]] && declare $var=""
 }
 
@@ -81,7 +81,7 @@ popfv(){
     local var="$1"
     [[ -z "$var" ]] && return 0;
     local len1=${#var}
-    declare $var=${!var#*:}
+    declare -g $var=${!var#*:}
     [[ "$before" == "${!var}" ]] && declare $var=""
 }
 

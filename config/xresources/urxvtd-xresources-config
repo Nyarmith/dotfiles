@@ -2,17 +2,17 @@
 URxvt.termName:		rxvt-256color
 
 !font
-!URxvt.font:		xft:Monospace:pixelsize=12
-!URxvt.allow_bold:	True
-URxvt.font: xft:DejaVu Sans Mono:pixelsize=12
-URxvt.boldFont: xft:DejaVu Sans Mono:pixelsize=12:weight=bold
+!URxvt.font:		xft:Monospace:pixelsize=11
+URxvt.allow_bold:	True
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=11
+!URxvt.boldFont: xft:DejaVu Sans Mono:pixelsize=12:weight=bold
 URxvt.letterSpace: -1
 
 ! makes bg dark and fg light
 URxvt.reverseVideo:	True
 
 ! enable link-clicking and browser-launching
-URxvt.perl-ext-common:	default,matcher,font-size
+URxvt.perl-ext-common:	default,matcher,font-size,bell-command
 URxvt.urlLauncher: 	firefox
 URxvt.matcher.button:	C1
 !or could use C1 for above
@@ -35,6 +35,9 @@ URxvt.keysym.Control-Insert: eval:selection_to_clipboard
 
 ! number of lines the term itself saves, slightly redundant b/c tmux
 URxvt.saveLines:	4095
+
+!! terminal bell command TODO: get relative path to wav
+! URxvt.bell-command: aplay /path/to/term_bell_custom.wav
 
 !! tango color theme
 URxvt.foreground:       #0c0c0c
@@ -59,4 +62,3 @@ URxvt.color15:          #eeeeec
 
 !disable ctrl-shift weirdness
 URxvt.iso14755:         False
-
