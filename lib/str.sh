@@ -1,3 +1,20 @@
+chr() {
+    if [ -z "$1" ] || (( "$1" > 256 )); then
+        echo "usage: chr <ascii_digit>"
+        return 1;
+    fi
+
+    printf "\\$(printf %o "$1")"
+}
+
+ord() {
+    [ -z "$1" ] && {
+        echo "usage: chr <ascii_char>"
+        return 1;
+    }
+    LC_CTYPE=C printf %d "'$1"
+}
+
 joins() {
     [[ -z "$2" ]] && {
         printf "Usage: joins <delim> <arg1> [arg2] ... [argN]"
