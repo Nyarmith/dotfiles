@@ -18,7 +18,7 @@ __make_ps1(){
         (( "$prevRet" )) && retStr="${prevRet} "
         fmtStr="\\\\u@\\\\h [\\\\w]%.12s %s "
     fi
-    printf "${fmtStr}$ " "$branch" "$retStr"
+    printf "${fmtStr}\\$ " "$branch" "$retStr"
 }
 
 # https://stackoverflow.com/questions/19092488/custom-bash-prompt-is-overwriting-itself
