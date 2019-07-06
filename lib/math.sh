@@ -63,5 +63,80 @@ if hash bc 2> /dev/null; then
         }
         printf "($1)/1\n" | bc
     }
+
+    if hash tput 2> /dev/null; then
+        plot(){
+            [ -z "$1" ] && {
+                printf "usage: plot <xy-func>\n"
+                return 1
+            }
+    
+            fn="$1"
+            rfn(){
+                round $("$fn" "$1")
+            }
+            
+            (( $("$rfn" 1) )) && {
+                printf "error: non-numeric function\n"
+                return 2
+            }
+            local fn="$1"
+
+            draw(){
+                clear
+                local cols=$(tput cols)
+                local rows=$(tput lines)
+                local cX=$(( cols / 2 ))
+                local cY=$(( rows / 2 ))
+
+                # plot fn
+                local pcol="$(tput setaf 4)"
+                local axcol="$(tput setaf 5)"
+                for (( x=0; x<cols; x++)); do
+
+                    # x-axis
+                    tput cup $cY $x && printf "${axcol}.${COL_OFF}"
+
+                    # fn
+                    tput cup $(( $(rfn $(( x - $cX ))) + cY )) $x &&
+                        printf "${pcol}*${COL_OFF}"
+                done
+    
+                # y-axis
+                for ((y=0; y<rows; ++y)); do
+                    tput cup $y $cX && printf "${axcol}:${COL_OFF}"
+                done
+
+                unset x
+                unset y
+            }
+
+            let loop=1
+
+            exitLoop(){
+                loop=0
+            }
+
+            trap draw WINCH
+            trap exitLoop INT
+
+            draw
+
+            while ((loop)); do
+                :
+            done
+
+            unset fn
+            unset loop
+
+            kill -9 $$  ## TODO: find process leak instead of resorting to this
+        }
+    fi
+
+    #TODO:
+    # - more lambda-like functions, like scale, reduce, map, etc...
+    # - graphing-cap goal: https://github.com/kroitor/asciichart
+    
+    # reference: http://linuxcommand.org/lc3_adv_tput.php
 fi
 

@@ -20,7 +20,7 @@ top10(){
   history | awk '{print $2}' | awk 'BEGIN {FS="|"}{print $1}' | sort | uniq -c | sort -nr | head
 }
 
-if hash socat 2> /dev/null; do
+if hash socat 2> /dev/null; then
 
     servefile(){
         [ -z "$1" ] && {
@@ -42,5 +42,5 @@ if hash socat 2> /dev/null; do
         "
         socat -d -d - tcp-l:"$port",reuseaddr,fork < <(printf "$header"; cat "$file")
     }
-done
+fi
 
