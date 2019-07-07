@@ -41,7 +41,7 @@ pushv() {
     if [[ -z ${!var} ]]; then
         declare -g $var="$2"
     else
-        declare $var="$var:$2"
+        declare -g $var="${!var}:$2"
     fi
 }
 
@@ -55,7 +55,7 @@ insv(){
     if [[ -z ${!var} ]]; then
         declare -g $var="$2"
     else
-        declare $var="$2:$var"
+        declare -g $var="$2:${!var}"
     fi
 }
 
@@ -69,7 +69,7 @@ popv(){
     [[ -z "$var" ]] && return 0;
     local before="${!var}"
     declare -g $var=${!var%:*}
-    [[ "$before" == "${!var}" ]] && declare $var=""
+    [[ "$before" == "${!var}" ]] && declare -g $var=""
 }
 
 popfv(){
@@ -82,7 +82,7 @@ popfv(){
     [[ -z "$var" ]] && return 0;
     local len1=${#var}
     declare -g $var=${!var#*:}
-    [[ "$before" == "${!var}" ]] && declare $var=""
+    [[ "$before" == "${!var}" ]] && declare -g $var=""
 }
 
 pappend() {
