@@ -5,6 +5,12 @@ exec --no-startup-id  urxvtd -q -o -f
 # start xpad
 exec --no-startup-id xpad -N
 
+# start compton
+exec --no-startup-id compton
+
+# restore wallpapers
+exec --no-startup-id feh --randomize --bg-center ~/Pictures/space_wallpaper_*.jpg
+
 # "winkey" as mod
 set $mod Mod4
 
@@ -32,7 +38,7 @@ bindsym $mod+Return exec urxvtc
 #bindsym $mod+Return exec i3-sensible-terminal
 #
 # lock screen
-bindsym $mod+Control+l exec i3lock -c 333333 -B=3 -k  --bar-indicator --datecolor=33333333 --redraw-thread
+bindsym $mod+Control+l exec xtrlock
 
 
 # kill focused window
@@ -156,6 +162,9 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        mode hide
+        hidden_state hide
+        modifier Mod1
 }
 
 #xpad config (linux sticky-notes)
@@ -165,8 +174,9 @@ for_window [class="xpad"] floating enabled
 
 #auto-detect desktop config
 #the latter script is made with arandr + $(xrandr --list-monitors | cksum) + if
-exec --no-startup-id ~/.screenlayout/work-displays.sh
+exec --no-startup-id ~/.screenlayout/deskDaulScreen.sh
 
+new_window 1pixel
 
 #TODO: Something akin to the below, albeit factor it out to a script
 #set $displayMode "Set display mode [w]ork [l]aptop [h]ome"
