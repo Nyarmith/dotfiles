@@ -13,3 +13,4 @@ sshtun(){
 }
 
 alias sshit='ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no"'
+alias scpit='scp -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no"'
