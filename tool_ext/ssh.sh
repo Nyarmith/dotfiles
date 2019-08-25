@@ -5,10 +5,11 @@ sshrun() {
 }
 
 sshtun(){
-    if [[ -z $4 ]]; then
+    if [[ -z $3 ]]; then
       printf "ssh_tunnel <local_port> <proxy_machine> <tun_machine:port>\n"
+      return 1
     fi
-    ssh -L $2:$4 $3
+    ssh -L $1:$3 $2
 }
 
 alias sshit='ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no"'
