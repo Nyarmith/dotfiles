@@ -9,7 +9,7 @@ chr() {
 
 ord() {
     [ -z "$1" ] && {
-        echo "usage: chr <ascii_char>"
+        echo "usage: ord <ascii_char>"
         return 1;
     }
     LC_CTYPE=C printf %d "'$1"
