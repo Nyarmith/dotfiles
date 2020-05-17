@@ -1,33 +1,97 @@
-# See if a string contains another.
-# Args:
-#   (str) target
-#   (str) query
-str_contains() {
-    echo "$1" | grep "$2" > /dev/null
-    return $?
+chr() {
+    if [ -z "$1" ] || (( "$1" > 256 )); then
+        echo "usage: chr <ascii_num>"
+        return 1;
+    fi
+
+    printf "\\$(printf %o "$1")"
 }
 
-# See if a string starts with another.
-# Args:
-#   (str) target - the string to search within
-#   (str) query
-str_startswith() {
-    test -z "${1##$2*}"
-    return $?
+ord() {
+    [ -z "$1" ] && {
+        echo "usage: ord <ascii_char>"
+        return 1;
+    }
+    LC_CTYPE=C printf %d "'$1"
 }
 
-# Join a set of arguments together.
-# Args:
-#   (str) joiner
-#   (str...) parts
-str_join() {
-    __str_join__delimeter="$1"
-    __str_join__val="$2"
+joins() {
+    [[ -z "$2" ]] && {
+        printf "Usage: joins <delim> <arg1> [arg2] ... [argN]"
+        return 0
+    }
+
+    local delim="$1"
+    local ret="$2"
     shift
     shift
-    for __str_join__item in "$@"; do
-        __str_join__val="$__str_join__val$__str_join__delimeter$__str_join__item"
+    for val in "$@"; do
+        ret="$ret$delim$ret"
     done
-    echo "$__str_join__val"
+    printf "%s\n" "$ret"
 }
 
+pushv() {
+    [[ -z "$2" ]] && {
+        printf "Usage: pushv <var> <val>\n"
+        return 0
+    }
+
+    local var="$1"
+    if [[ -z ${!var} ]]; then
+        declare -g $var="$2"
+    else
+        declare -g $var="${!var}:$2"
+    fi
+}
+
+insv(){
+    [[ -z "$2" ]] && {
+        printf "Usage: insv <var> <val>\n"
+        return 0
+    }
+
+    local var="$1"
+    if [[ -z ${!var} ]]; then
+        declare -g $var="$2"
+    else
+        declare -g $var="$2:${!var}"
+    fi
+}
+
+popv(){
+    [[ -z "$1" ]] && {
+        printf "Usage: popv <var>\n"
+        return 0
+    }
+
+    local var="$1"
+    [[ -z "$var" ]] && return 0;
+    local before="${!var}"
+    declare -g $var=${!var%:*}
+    [[ "$before" == "${!var}" ]] && declare -g $var=""
+}
+
+popfv(){
+    [[ -z "$1" ]] && {
+        printf "Usage: popv <var>\n"
+        return 0
+    }
+
+    local var="$1"
+    [[ -z "$var" ]] && return 0;
+    local len1=${#var}
+    declare -g $var=${!var#*:}
+    [[ "$before" == "${!var}" ]] && declare -g $var=""
+}
+
+pappend() {
+    pushv PATH "$1"
+}
+
+pprepend() {
+    insv PATH "$1"
+}
+
+# note for arrays, you can simply do existingArr+=(additional elements)
+# and deletion is ... ugh ... "${array[@]/$delete}"

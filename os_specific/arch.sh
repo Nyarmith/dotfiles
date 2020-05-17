@@ -1,58 +1,69 @@
-# Get arch for a host
-# - RHEL, CentOS, HPUX, AIX, SunOS, Linux (generic)
-get_arch() {
-    typeset arch=""
+# Get os for a host
+
+__getlinux(){
+    if hash lsb_release 2> /dev/null; then
+        joins ' ' $(lsb_release -d -r | awk '{print $2}')
+    elif [ -r /proc/version ]; then
+        cat /proc/version | awk '{print $3}'
+    elif hash uname 2> /dev/null; then
+        uname -mrs
+    fi
+}
+
+# - RHEL, CentOS, HPUX, AIX, SunOS, Linux (some generic heuristics)
+whatos(){
+    local OS=""
     if test -f /etc/redhat-release; then
         OS=`cat /etc/redhat-release | awk {'print $1'}`
         if test "$OS" = "Red"; then
-            arch=RHEL
+            OS=RHEL
         else
-            arch=CentOS
+            OS=CentOS
         fi
     else
         OS=`uname -a | awk {'print $1'}`
         if test "$OS" = "HP-UX"; then
-            arch=HPUX
+            OS=HPUX
         elif test "$OS" = "AIX"; then
-            arch=AIX
+            OS=AIX
         elif test "$OS" = "SunOS"; then
-            arch=SunOS
+            OS=SunOS
         else
-            arch=$OS    #usually "Linux"
+            OS=$(__getlinux)
         fi
     fi
-    echo $arch
+    echo $OS
 }
-
-ARCH="$(get_arch)"
-export ARCH
-
 
 #shared library variable based on platform
 
-if str_contains "$(get_arch)" "HP-UX"; then
+if [[ "$(whatos)" =~ "HP-UX" ]]; then
     __shlib_path="SHLIB_PATH"
-elif str_contains "$(get_arch)" "AIX"; then
+elif [[ "$(whatos)" =~ "AIX" ]]; then
     __shlib_path="LIBPATH"
 else
     __shlib_path="LD_LIBRARY_PATH"
 fi
 
-export $__shlib_path #may not be necessary
+export $__shlib_path
 
 #accept directory, adds to library search path
-addlibs(){
-    prependvar __shlib_path $1
+addlib(){
+    pushv $__shlib_path "$1"
 }
 
 #get number of cores on machine
-corenum() {
-    if str_contains "$(get_arch)" "SunOS"; then
+cores(){
+    if str_contains "$(whatos)" "SunOS"; then
         psrinfo -p
-    elif str_contains "$(get_arch)" "AIX"; then
+    elif str_contains "$(whatos)" "AIX"; then
         lsconf | grep Process #lsdev -Cc processor
     else   #some linux
         grep -c ^processor /proc/cpuinfo
     fi
 }
 
+# no fancy ls available for HP-UX
+if [[ $(whatos) == "HP-UX" || $(whatos) == "AIX" ]]; then
+  unalias ls
+fi

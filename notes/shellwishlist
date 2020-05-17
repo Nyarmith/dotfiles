@@ -1,0 +1,7 @@
+Things I want out of a shell:
+- matrix operation support
+- intuitive graphing
+- floating point support
+- the ability to loadshared-objects into shell functions
+- more sophisticated scoping
+- extremely terse lambda syntax
