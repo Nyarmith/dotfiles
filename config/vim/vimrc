@@ -9,7 +9,7 @@ Plugin 'gmarik/Vundle.vim'
 " Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'  "generate completion database based on cmake or makefile
 
 call vundle#end()
@@ -20,8 +20,8 @@ filetype plugin indent on
 set autoindent
 set smartindent
 set number          "numbers on left part of screen
-set tabstop=2       "Number of spaces that actual tabs are represented as
-set shiftwidth=2    "Number of spaces used for autoindent steps
+set tabstop=4       "Number of spaces that actual tabs are represented as
+set shiftwidth=4    "Number of spaces used for autoindent steps
 set cindent
 " handle lambda correctly
 set cino=j1,(0,ws,Ws,g0
@@ -79,6 +79,7 @@ let @m = "i#include <iostream>\n#include <vector>\n#include <string>\n#include <
 colorscheme torte
 
 " set backspace=indent,eol,start " uncomment if I want to use bad conventions
+let g:ycm_auto_trigger = 0
 let g:ycm_global_ycm_extra_conf = $XDG_CONFIG_HOME.'/vim/.ycm_extra_conf.py'
 let g:ycm_rust_src_path = '~/rsrc/src'
 let g:ycm_confirm_extra_conf = 0
