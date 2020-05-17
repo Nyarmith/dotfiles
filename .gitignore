@@ -1,4 +1,3 @@
-aliases/desktop_aliases.sh
 config/gummi*
 config/config*
 config/mono*
@@ -9,3 +8,4 @@ config/configstore*
 config/gedit*
 config/gtk-2*
 *.swp
+host_specific/*.sh
