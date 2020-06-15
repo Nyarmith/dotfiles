@@ -1,6 +1,7 @@
 *.swp
 aliases/desktop_aliases.sh
 config/Pinta*
+config/QtProject.conf
 config/brasero*
 config/calibre*
 config/config*
@@ -8,9 +9,8 @@ config/configstore*
 config/gedit*
 config/gtk-2*
 config/gummi*
-config/mono*
 config/mgba
+config/mono*
 config/pulse*
 config/vlc*
-config/QtProject.conf
 host_specific/*
