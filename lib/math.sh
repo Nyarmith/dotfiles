@@ -1,3 +1,12 @@
+    # number system formatting
+    tohex(){
+        [[ -z "$1" ]] && {
+            printf "Usage: hex <val>\n"
+            return 1
+        }
+        printf "0x%x\n" "$1"
+    }
+
 if hash bc 2> /dev/null; then
     # bc aliases
     sin(){
