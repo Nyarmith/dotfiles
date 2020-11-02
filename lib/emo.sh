@@ -13,6 +13,7 @@ emo(){
                           ["catfish"]='(✿◠‿◠)'
                           ["cheeky"]='(¬‿¬)'
                           ["wat"]='(ㆆ_ㆆ)'
+                          ["stand"]='「」'
                           ["shrug"]='¯\_(ツ)_/¯')
     [ -z $1 ] && {
         printf "Usage: emo <key>\n  for a list of keys, run emo list\n"
