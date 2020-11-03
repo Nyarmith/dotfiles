@@ -33,6 +33,7 @@ import_dir aliases
 import_dir tool_ext
 import_dir os_specific
 import_dir host_specific 2> /dev/null
+import_dir misc
 
 printlog "End - importing directories"
 
