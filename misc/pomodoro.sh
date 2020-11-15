@@ -120,7 +120,7 @@ pomo()
                     echo "no message supplied"
                     return 1
                 }
-                local message="$1"
+                message="$1"
                 shift
                 ;;
         esac
