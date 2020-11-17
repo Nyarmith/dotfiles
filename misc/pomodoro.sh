@@ -1,5 +1,4 @@
 ## Bash Pomodoro Timer
-## Use named pipe for ipc & persistence w/ self
 
 export SFXDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/timer_sfx"
 
@@ -49,10 +48,15 @@ __countdown()
         fi
         echo "$BASHPID $otime $time" > $FIFO
     done
+
     echo "-1 $otime $time" > $FIFO
 
     if [ "$message" != "none" ]; then
         notify-send "pomo: $message"
+
+        if [ ! -z "$POMO_LOG_PREFIX" ]; then
+            echo $message : `echo "scale=2; $otime/60" | bc` >> "$POMO_LOG_PREFIX.$(date '+%Y-%m-%d')"
+        fi
     fi
 
     play $ALARM &> /dev/null
@@ -76,7 +80,7 @@ pomo()
                 # check for existing pid
                 local oldpid=$(tail -n1 $FIFO | awk '{print $1;}')
                 if [ ! -z $oldpid ] && ((oldpid != -1)); then
-                    # todo, check that the pid doesn't have a new process name
+                    # todo, check that the pid doesn't have a new process name and/or overwrite pid as -1
                     kill $oldpid 2>&1 | /dev/null
                 fi
                 local runTime="$mins"
@@ -92,6 +96,7 @@ pomo()
             -p|--pause)
                 local oldpid=$(tail -n1 $FIFO | awk '{print $1;}')
                 if [ ! -z $oldpid ] && ((oldpid != -1)); then
+                    # todo, check that the pid doesn't have a new process name
                     kill $oldpid
                 fi
                 return 0
