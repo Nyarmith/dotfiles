@@ -55,7 +55,7 @@ __countdown()
         notify-send "pomo: $message"
 
         if [ ! -z "$POMO_LOG_PREFIX" ]; then
-            echo $message : `echo "scale=2; $otime/60" | bc` >> "$POMO_LOG_PREFIX.$(date '+%Y-%m-%d')"
+            echo "$(date +%H:%M)" $message : `echo "scale=2; $otime/60" | bc` >> "$POMO_LOG_PREFIX.$(date '+%Y-%m-%d')"
         fi
     fi
 
