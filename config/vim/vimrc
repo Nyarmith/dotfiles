@@ -36,6 +36,7 @@ syntax on
 
 "c++ main macro
 let @m = "i#include <iostream>\n#include <vector>\n#include <string>\n#include <cstdint>\n#include <cstdio>\n#include <numeric>\n#include <algorithm>\n#include <iterator>\n#include <set>\n#include <map>\n#include <utility>\n#include <queue>\n#define ll long long\n\nint main(){\n}\n"
+call setreg('L',"/**\n * @file <filename>\n *\n * Copyright 2021 \n * Carnegie Robotics, LLC\n * 4501 Hatfield Street, Pittsburgh, PA 15201\n * https://www.carnegierobotics.com\n *\n * Significant history (date, user, job code, action):\n *  <YYYY-MM-DD>, <user>@carnegierobotics.com, <Project Code>, <Action>.\n */")
 
 colorscheme torte
 hi Normal guibg=NONE ctermbg=NONE
